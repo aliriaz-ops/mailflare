@@ -5,6 +5,12 @@ import { imagesOptimizer } from "@vinext/cloudflare/images/images-optimizer";
 import lintConfig from "./lint.config";
 
 export default defineConfig({
+define: {
+		"process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY": JSON.stringify(
+			process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY,
+		),
+	},
+	
 	// Keep the existing source formatting while adopting Vite+ checks.
 	check: { fmt: false },
 	lint: { ...lintConfig, options: { typeAware: true, typeCheck: true } },
